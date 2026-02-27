@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bargeldinitiative 2026 – Volksabstimmung 8. März</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C8102E;
+    --dark: #0a0a0a;
+    --gold: #D4A017;
+    --off-white: #F5F0E8;
+    --gray: #888;
+    --border: rgba(200,16,46,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--off-white);
+    color: var(--dark);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--dark);
+    color: var(--off-white);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(200,16,46,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(212,160,23,0.1) 0%, transparent 50%);
+  }
+
+  .swiss-cross {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    margin-bottom: 40px;
+    animation: fadeDown 1s ease both;
+  }
+  .swiss-cross::before, .swiss-cross::after {
+    content: '';
+    position: absolute;
+    background: var(--red);
+    border-radius: 2px;
+  }
+  .swiss-cross::before { width: 20px; height: 60px; left: 20px; top: 0; }
+  .swiss-cross::after { width: 60px; height: 20px; left: 0; top: 20px; }
+
+  .hero-date {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    animation: fadeDown 1s 0.2s ease both;
+    opacity: 0;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    max-width: 900px;
+    animation: fadeDown 1s 0.4s ease both;
+    opacity: 0;
+  }
+
+  .hero h1 span { color: var(--red); }
+
+  .hero-sub {
+    margin-top: 24px;
+    font-size: 1.1rem;
+    opacity: 0.65;
+    max-width: 560px;
+    animation: fadeDown 1s 0.6s ease both;
+    opacity: 0;
+    line-height: 1.7;
+  }
+
+  .scroll-hint {
+    margin-top: 60px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+    animation: fadeDown 1s 0.9s ease both, pulse 2s 2s infinite;
+    opacity: 0;
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* CONTENT */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* SECTION */
+  .section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .section.visible { opacity: 1; transform: translateY(0); }
+
+  .section-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 11rem;
+    font-weight: 900;
+    color: rgba(200,16,46,0.06);
+    line-height: 1;
+    position: absolute;
+    right: -20px;
+    top: -30px;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .section-inner {
+    position: relative;
+  }
+
+  .section-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    border: 1px solid var(--red);
+    padding: 4px 10px;
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  .section p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #2a2a2a;
+    margin-bottom: 16px;
+  }
+
+  /* TWO COLUMN */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 32px;
+  }
+
+  .col-card {
+    padding: 32px;
+    background: var(--dark);
+    color: var(--off-white);
+  }
+  .col-card.light {
+    background: white;
+    color: var(--dark);
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .col-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+  }
+  .col-card.light h3 { color: var(--dark); }
+  .col-card h3 .label { display: block; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; font-family: 'Source Sans 3', sans-serif; font-weight: 600; }
+
+  .col-card ul { list-style: none; padding: 0; }
+  .col-card ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .col-card.light ul li { border-bottom-color: rgba(0,0,0,0.07); }
+  .col-card ul li:last-child { border-bottom: none; }
+  .col-card ul li .icon { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+
+  /* ARGUMENT GRID */
+  .arg-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .arg-card {
+    padding: 28px;
+    border-left: 3px solid var(--red);
+    background: white;
+  }
+  .arg-card.contra { border-left-color: #555; }
+
+  .arg-card .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: rgba(200,16,46,0.15);
+    line-height: 1;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .arg-card.contra .num { color: rgba(0,0,0,0.08); }
+
+  .arg-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+    color: #333;
+  }
+
+  /* FACTS BOX */
+  .facts-box {
+    background: var(--dark);
+    color: var(--off-white);
+    padding: 48px;
+    margin-top: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .facts-box::before {
+    content: '✔';
+    font-size: 15rem;
+    position: absolute;
+    right: -20px;
+    bottom: -40px;
+    opacity: 0.03;
+    font-family: sans-serif;
+  }
+  .facts-box ul { list-style: none; }
+  .facts-box ul li {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    gap: 14px;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .facts-box ul li:last-child { border-bottom: none; }
+  .facts-box .check { color: var(--gold); flex-shrink: 0; }
+
+  /* PROCESS */
+  .process {
+    display: flex;
+    gap: 0;
+    margin-top: 32px;
+  }
+  .process-step {
+    flex: 1;
+    padding: 32px;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.07);
+    position: relative;
+    text-align: center;
+  }
+  .process-step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--red);
+    font-size: 1.2rem;
+    z-index: 1;
+    background: var(--off-white);
+    padding: 4px;
+  }
+  .process-step .step-icon { font-size: 2rem; margin-bottom: 12px; }
+  .process-step h4 { font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 8px; }
+  .process-step p { font-size: 0.85rem; color: #666; line-height: 1.5; margin: 0; }
+
+  /* CONCLUSION */
+  .conclusion {
+    background: var(--red);
+    color: white;
+    padding: 80px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .conclusion::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+  }
+  .conclusion h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 900;
+    max-width: 700px;
+    margin: 0 auto 32px;
+    line-height: 1.2;
+  }
+  .conclusion p {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    max-width: 560px;
+    margin: 0 auto 16px;
+    line-height: 1.7;
+  }
+
+  /* SOURCES */
+  .sources {
+    background: var(--dark);
+    color: var(--off-white);
+    padding: 60px 40px;
+    text-align: center;
+  }
+  .sources h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 32px;
+    color: var(--gold);
+  }
+  .sources ul { list-style: none; display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; }
+  .sources ul li {
+    font-size: 0.9rem;
+    opacity: 0.6;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sources ul li::before { content: '↗'; color: var(--gold); }
+
+  /* DIVIDER */
+  .red-line {
+    height: 3px;
+    background: linear-gradient(to right, var(--red), var(--gold), var(--red));
+  }
+
+  @media (max-width: 680px) {
+    .two-col, .arg-grid { grid-template-columns: 1fr; }
+    .process { flex-direction: column; }
+    .process-step:not(:last-child)::after { content: '↓'; right: 50%; transform: translateX(50%); bottom: -16px; top: auto; }
+    .section-number { font-size: 6rem; }
+    .container { padding: 0 24px; }
+    .facts-box { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="swiss-cross"></div>
+  <p class="hero-date">Volksabstimmung · 8. März 2026</p>
+  <h1>Bargeld<span>initiative</span><br>2026</h1>
+  <p class="hero-sub">Die Schweiz stimmt über den Verfassungsschutz des Bargelds und des Schweizer Frankens ab. Zwei Vorlagen, eine Stichfrage, eine Entscheidung.</p>
+  <p class="scroll-hint">↓ Scrollen</p>
+</div>
+
+<div class="red-line"></div>
+
+<!-- SECTION 1: Hintergrund -->
+<div class="container">
+  <div class="section" id="s1">
+    <div class="section-inner">
+      <div class="section-number">1</div>
+      <span class="section-tag">Einführung & Hintergrund</span>
+      <h2>Worum geht es bei dieser Abstimmung?</h2>
+      <p>Am 8. März 2026 stimmt die Schweiz über die Volksinitiative <em>„Bargeld ist Freiheit"</em> und den direkten Gegenentwurf ab. Ziel beider Vorlagen ist es, die Bargeldversorgung und den Schweizer Franken in der Bundesverfassung zu verankern.</p>
+      <p>Beide Vorlagen würden heute bestehende gesetzliche Regelungen in die Verfassung übernehmen oder erweitern – sie schaffen also keinen völlig neuen Rechtsrahmen, sondern erhöhen den Schutzstatus bewährter Regeln.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 2: Ausgangslage -->
+  <div class="section" id="s2">
+    <div class="section-inner">
+      <div class="section-number">2</div>
+      <span class="section-tag">Ausgangslage</span>
+      <h2>Warum jetzt? Das gesellschaftliche Umfeld</h2>
+      <p>In der Schweiz wird immer weniger mit Bargeld bezahlt; digitale Zahlungen nehmen stetig zu. Trotzdem bleibt Bargeld für viele Bürgerinnen und Bürger ein wichtiges Zahlungsmittel – aus Gewohnheit, aus Sicherheitsgründen oder wegen der Anonymität.</p>
+      <p>Heute regelt das Gesetz, dass die Nationalbank (SNB) die Bargeldversorgung sicherstellt und dass der Franken die offizielle Währung der Schweiz ist. Die Initiative will diese Garantien auf Verfassungsebene heben.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 3+4: Die zwei Vorlagen -->
+  <div class="section" id="s3">
+    <div class="section-inner">
+      <div class="section-number">3</div>
+      <span class="section-tag">Die zwei Vorlagen</span>
+      <h2>Initiative vs. Gegenentwurf</h2>
+      <div class="two-col">
+        <div class="col-card">
+          <h3><span class="label">Volksinitiative</span>„Bargeld ist Freiheit"</h3>
+          <ul>
+            <li><span class="icon">●</span>Der Bund muss sicherstellen, dass Münzen und Banknoten stets zur Verfügung stehen.</li>
+            <li><span class="icon">●</span>Der Schweizer Franken darf nur mit Zustimmung von Volk und Ständen durch eine andere Währung ersetzt werden.</li>
+            <li><span class="icon">●</span>Diese Forderungen stehen neu direkt in der Bundesverfassung – mit strikten Formulierungen.</li>
+          </ul>
+        </div>
+        <div class="col-card light">
+          <h3><span class="label" style="color:var(--red)">Gegenentwurf</span>Bundesrat & Parlament</h3>
+          <ul>
+            <li><span class="icon" style="color:var(--red)">●</span>Basiert auf bewährten Gesetzesformulierungen und übernimmt diese in die Verfassung.</li>
+            <li><span class="icon" style="color:var(--red)">●</span>Verankert die Bargeldversorgung durch die SNB verfassungsrechtlich.</li>
+            <li><span class="icon" style="color:var(--red)">●</span>Festschreibung des Frankens als Währung – ohne zusätzliche Mengenvorgaben.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: Stimmprozedere -->
+  <div class="section" id="s5">
+    <div class="section-inner">
+      <div class="section-number">5</div>
+      <span class="section-tag">Abstimmungsverfahren</span>
+      <h2>Wie wird abgestimmt?</h2>
+      <div class="process">
+        <div class="process-step">
+          <div class="step-icon">🗳️</div>
+          <h4>Ja/Nein zur Initiative</h4>
+          <p>Getrennte Abstimmung über „Bargeld ist Freiheit"</p>
+        </div>
+        <div class="process-step">
+          <div class="step-icon">📊</div>
+          <h4>Ja/Nein zum Gegenentwurf</h4>
+          <p>Separate Abstimmung über den Parlamentsgegenentwurf</p>
+        </div>
+        <div class="process-step">
+          <div class="step-icon">⚖️</div>
+          <h4>Stichfrage</h4>
+          <p>Falls beide angenommen: Welche Vorlage hat Vorrang?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: Fakten -->
+  <div class="section" id="s6">
+    <div class="section-inner">
+      <div class="section-number">6</div>
+      <span class="section-tag">Auf einen Blick</span>
+      <h2>Wichtige Fakten</h2>
+      <div class="facts-box">
+        <ul>
+          <li><span class="check">✔</span>Beide Vorlagen schaffen keine zusätzlichen Kosten und keine neuen Behörden.</li>
+          <li><span class="check">✔</span>Beide Vorlagen verankern bestehende Regeln auf Verfassungsstufe – keine völligen Neuerungen.</li>
+          <li><span class="check">✔</span>Bundesrat und Parlament lehnen die Initiative ab, unterstützen aber ausdrücklich den Gegenentwurf.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7+8: Pro/Contra Initiative -->
+  <div class="section" id="s7">
+    <div class="section-inner">
+      <div class="section-number">7</div>
+      <span class="section-tag">Initiative: Pro & Contra</span>
+      <h2>Argumente zur Volksinitiative</h2>
+      <div class="arg-grid">
+        <div class="arg-card"><span class="num">01</span><p><strong style="color:var(--red)">PRO –</strong> Schutz von Bargeld: Noten und Münzen bleiben durch die Verfassung garantiert verfügbar.</p></div>
+        <div class="arg-card contra"><span class="num">01</span><p><strong>CONTRA –</strong> Unnötige Verfassungsänderung: Viele Regelungen sind bereits gesetzlich ausreichend verankert.</p></div>
+        <div class="arg-card"><span class="num">02</span><p><strong style="color:var(--red)">PRO –</strong> Krisensicherheit: Bargeld funktioniert auch ohne Strom oder Netzwerk.</p></div>
+        <div class="arg-card contra"><span class="num">02</span><p><strong>CONTRA –</strong> Unklare Auslegung: Neue Formulierungen könnten rechtliche Fragen und Unsicherheiten aufwerfen.</p></div>
+        <div class="arg-card"><span class="num">03</span><p><strong style="color:var(--red)">PRO –</strong> Freiheit & Privatsphäre: Bargeld unterstützt anonyme und selbstbestimmte Zahlungen.</p></div>
+        <div class="arg-card contra"><span class="num">03</span><p><strong>CONTRA –</strong> Bestehender Schutz genügt: Viele Kritiker sehen die geltenden Gesetze als ausreichend an.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 9+10: Pro/Contra Gegenentwurf -->
+  <div class="section" id="s9">
+    <div class="section-inner">
+      <div class="section-number">9</div>
+      <span class="section-tag">Gegenentwurf: Pro & Contra</span>
+      <h2>Argumente zum Gegenentwurf</h2>
+      <div class="arg-grid">
+        <div class="arg-card"><span class="num">01</span><p><strong style="color:var(--red)">PRO –</strong> Bewährte Formulierungen: Übernimmt erprobte Gesetzesformulierungen in die Verfassung.</p></div>
+        <div class="arg-card contra"><span class="num">01</span><p><strong>CONTRA –</strong> Unpräziser Begriff „Bargeld": Könnte auch digitale Zahlungsformen einschliessen.</p></div>
+        <div class="arg-card"><span class="num">02</span><p><strong style="color:var(--red)">PRO –</strong> Rechtlich eindeutig: Klarer und stabiler als die Formulierungen der Initiative.</p></div>
+        <div class="arg-card contra"><span class="num">02</span><p><strong>CONTRA –</strong> SNB bleibt Hauptverantwortliche: Weniger direkte Kontrolle für die Bürgerinnen und Bürger.</p></div>
+        <div class="arg-card"><span class="num">03</span><p><strong style="color:var(--red)">PRO –</strong> Politische Stabilität: Unterstützt von Bundesrat und Parlament.</p></div>
+        <div class="arg-card contra"><span class="num">03</span><p><strong>CONTRA –</strong> Redundanz: Der Verfassungsartikel könnte überflüssig sein, da vieles schon im Gesetz steht.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONCLUSION -->
+<div class="conclusion">
+  <h2>Die Kernfrage dieser Abstimmung</h2>
+  <p>Soll Bargeld als Ausdruck von Freiheit und Krisensicherheit stärker verfassungsrechtlich geschützt werden?</p>
+  <p>Oder reicht es, bestehende Regeln in die Verfassung zu übernehmen, ohne neue, weitgehende Verpflichtungen einzugehen?</p>
+</div>
+
+<!-- SOURCES -->
+<div class="sources">
+  <h3>Quellen</h3>
+  <ul>
+    <li>admin.ch – Bundesdokumentation zur Abstimmung 8. März 2026</li>
+    <li>easyvote.ch – Erklärung zur Bargeld-Vorlage</li>
+    <li>SRF – Überblick zu Bargeldinitiative & Gegenentwurf</li>
+  </ul>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.section').forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
