@@ -355,6 +355,54 @@
   }
   .pdot { width: 10px; height: 10px; border-radius: 50%; }
 
+  /* ── DEFINITIONEN ── */
+  .def-section { padding: 100px 24px; max-width: 1080px; margin: 0 auto; }
+  .def-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 700px) { .def-grid { grid-template-columns: 1fr; } }
+
+  .def-card {
+    border-radius: var(--r);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: transform .3s cubic-bezier(.25,.46,.45,.94), box-shadow .3s;
+  }
+  .def-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+  }
+  .def-header {
+    padding: 28px 32px 22px;
+    display: flex; align-items: flex-start; gap: 18px;
+  }
+  .def-icon-wrap {
+    width: 52px; height: 52px; min-width: 52px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+  }
+  .def-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+  .def-title { font-size: 26px; font-weight: 700; letter-spacing: -0.6px; line-height: 1.1; }
+  .def-body { padding: 0 32px 28px; font-size: 15px; color: var(--text2); line-height: 1.75; }
+  .def-body p { margin-bottom: 14px; }
+  .def-body p:last-child { margin-bottom: 0; }
+  .def-body strong { color: var(--text); font-weight: 600; }
+  .def-tags { padding: 0 32px 28px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .def-tag {
+    padding: 5px 13px; border-radius: 100px;
+    font-size: 12px; font-weight: 500;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--text2);
+  }
+  .def-divider { height: 1px; background: var(--border); margin: 0 32px; }
+
+  .def-pillars { padding: 20px 32px 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .def-pillar {
+    background: rgba(255,255,255,0.04); border-radius: 12px; padding: 14px 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .def-pillar-title { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .def-pillar-desc { font-size: 11px; color: var(--text3); line-height: 1.5; }
+
   /* Responsive */
   @media (max-width: 600px) {
     .party-grid { grid-template-columns: 1fr 1fr; }
@@ -372,6 +420,7 @@
 <nav>
   <div class="nav-logo">🇨🇭 Steuerpolitik Schweiz</div>
   <div class="nav-links">
+    <a href="#definitionen">Definitionen</a>
     <a href="#parteien">Parteien</a>
     <a href="#steuern">Steuerpolitik</a>
     <a href="#vergleich">Vergleich</a>
@@ -395,6 +444,118 @@
     <span>Mehr erfahren</span>
     <div class="scroll-line"></div>
   </div>
+</div>
+
+<!-- DEFINITIONEN -->
+<div class="full-section" id="definitionen">
+<section class="def-section">
+  <div class="reveal">
+    <div class="section-label">Grundlagen</div>
+    <div class="section-title">Was bedeutet das?</div>
+    <div class="section-sub">Die wichtigsten Begriffe erklärt – verständlich und klar.</div>
+  </div>
+  <div class="def-grid reveal">
+
+    <!-- FINANZPOLITIK -->
+    <div class="def-card" style="background: linear-gradient(160deg, rgba(206,17,38,0.08) 0%, rgba(0,0,0,0) 60%), var(--surface)">
+      <div class="def-header">
+        <div class="def-icon-wrap" style="background:rgba(206,17,38,0.15)">🏛️</div>
+        <div>
+          <div class="def-label" style="color:var(--accent)">Begriff 1</div>
+          <div class="def-title">Finanzpolitik</div>
+        </div>
+      </div>
+      <div class="def-body">
+        <p>Die <strong>Finanzpolitik</strong> umfasst alle staatlichen Entscheidungen über <strong>Einnahmen und Ausgaben</strong> des Bundes, der Kantone und Gemeinden. Sie ist ein zentrales Steuerungsinstrument des Staates.</p>
+        <p>Durch die Finanzpolitik bestimmt der Staat, <strong>wie viel Geld er einnimmt</strong> (z.&nbsp;B. durch Steuern und Abgaben) und <strong>wofür er es ausgibt</strong> (z.&nbsp;B. Bildung, Gesundheit, Infrastruktur, Sozialleistungen). Sie beeinflusst direkt die wirtschaftliche Entwicklung und den gesellschaftlichen Zusammenhalt.</p>
+      </div>
+      <div class="def-divider"></div>
+      <div class="def-pillars">
+        <div class="def-pillar">
+          <div class="def-pillar-title">📥 Einnahmenpolitik</div>
+          <div class="def-pillar-desc">Steuern, Abgaben, Gebühren und weitere staatliche Einnahmen</div>
+        </div>
+        <div class="def-pillar">
+          <div class="def-pillar-title">📤 Ausgabenpolitik</div>
+          <div class="def-pillar-desc">Staatsausgaben für Bildung, Soziales, Infrastruktur, Verteidigung</div>
+        </div>
+        <div class="def-pillar">
+          <div class="def-pillar-title">⚖️ Haushaltspolitik</div>
+          <div class="def-pillar-desc">Balance zwischen Einnahmen und Ausgaben, Schuldenbremse</div>
+        </div>
+        <div class="def-pillar">
+          <div class="def-pillar-title">📈 Konjunkturpolitik</div>
+          <div class="def-pillar-desc">Staatliche Massnahmen zur Steuerung der Wirtschaftslage</div>
+        </div>
+      </div>
+      <div class="def-tags">
+        <span class="def-tag">Staatshaushalt</span>
+        <span class="def-tag">Schuldenbremse</span>
+        <span class="def-tag">Investitionen</span>
+        <span class="def-tag">Sozialausgaben</span>
+        <span class="def-tag">Budgetdebatte</span>
+      </div>
+    </div>
+
+    <!-- STEUERPOLITIK -->
+    <div class="def-card" style="background: linear-gradient(160deg, rgba(212,168,67,0.08) 0%, rgba(0,0,0,0) 60%), var(--surface)">
+      <div class="def-header">
+        <div class="def-icon-wrap" style="background:rgba(212,168,67,0.15)">💡</div>
+        <div>
+          <div class="def-label" style="color:var(--gold)">Begriff 2</div>
+          <div class="def-title">Steuerpolitik</div>
+        </div>
+      </div>
+      <div class="def-body">
+        <p>Die <strong>Steuerpolitik</strong> ist ein Teilbereich der Finanzpolitik und befasst sich mit der Gestaltung des <strong>Steuersystems</strong>: Wer zahlt wie viel? Welche Steuern gibt es? Wie werden sie erhoben?</p>
+        <p>In der Schweiz gibt es Steuern auf Bundes-, Kantons- und Gemeindeebene. Die <strong>direkte Bundessteuer</strong>, die <strong>Mehrwertsteuer</strong>, die <strong>Einkommens- und Vermögenssteuer</strong> der Kantone sowie die <strong>Unternehmenssteuer</strong> sind die wichtigsten Instrumente. Die Steuerpolitik entscheidet, ob ein Staat eher auf <strong>Umverteilung</strong> oder auf <strong>wirtschaftliche Anreize</strong> setzt.</p>
+      </div>
+      <div class="def-divider"></div>
+      <div class="def-pillars">
+        <div class="def-pillar">
+          <div class="def-pillar-title">👤 Einkommenssteuer</div>
+          <div class="def-pillar-desc">Steuer auf das Einkommen natürlicher Personen</div>
+        </div>
+        <div class="def-pillar">
+          <div class="def-pillar-title">🏢 Unternehmenssteuer</div>
+          <div class="def-pillar-desc">Steuer auf Gewinne von Unternehmen und Kapitalgesellschaften</div>
+        </div>
+        <div class="def-pillar">
+          <div class="def-pillar-title">🛒 Mehrwertsteuer</div>
+          <div class="def-pillar-desc">Indirekte Steuer auf Konsum und Dienstleistungen (CH: 8,1%)</div>
+        </div>
+        <div class="def-pillar">
+          <div class="def-pillar-title">💰 Vermögenssteuer</div>
+          <div class="def-pillar-desc">Kantonal: Steuer auf das Gesamtvermögen einer Person</div>
+        </div>
+      </div>
+      <div class="def-tags">
+        <span class="def-tag">Progressivsteuer</span>
+        <span class="def-tag">Steuerwettbewerb</span>
+        <span class="def-tag">Fiskalquote</span>
+        <span class="def-tag">Steuerharmonisierung</span>
+        <span class="def-tag">OECD-Mindeststeuer</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Unterschied Box -->
+  <div class="reveal" style="margin-top:24px">
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--r); padding:32px 36px; display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap;">
+      <div style="font-size:32px">🔍</div>
+      <div style="flex:1; min-width:220px;">
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-.2px">Was ist der Unterschied?</div>
+        <div style="font-size:14px;color:var(--text2);line-height:1.7">
+          <strong style="color:var(--text)">Finanzpolitik</strong> ist der Oberbegriff – sie umfasst alles, was der Staat mit seinem Geld macht.
+          <strong style="color:var(--text)">Steuerpolitik</strong> ist ein Teil davon und regelt speziell, <em>wie</em> der Staat seine Einnahmen durch Steuern generiert.
+          Einfach gesagt: Steuerpolitik entscheidet, <em>wer wie viel einzahlt</em> – Finanzpolitik entscheidet, <em>wofür das Geld ausgegeben wird</em>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
 </div>
 
 <!-- KENNZAHLEN -->
